@@ -20,7 +20,7 @@ UPDATE_DIR=${MAIN_DIR}/cwm-update
 export ARCH=arm
 export CROSS_COMPILE=${MAIN_DIR}/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-
 
-(cd ${KERNEL_SOURCE_DIR} && make clean && make cyanogenmod_i9300_defconfig && make -j 4 && make modules)
+(cd ${KERNEL_SOURCE_DIR} && make clean && make baobab_i9300_defconfig && make -j 4 && make modules)
 
 mkdir -p ${OUT_DIR}
 
