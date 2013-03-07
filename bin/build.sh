@@ -15,6 +15,7 @@ KERNEL_SOURCE_DIR=${MAIN_DIR}/../baobab-kernel-aosp-s3
 OUT_DIR=${MAIN_DIR}/baobab-kernel-out
 BOOT_IMG_DIR=${MAIN_DIR}/boot-images
 UPDATE_DIR=${MAIN_DIR}/cwm-update
+MODULES_DIR=${UPDATE_DIR}/system/lib/modules/
 
 # Compiling kernel
 export ARCH=arm
@@ -23,9 +24,10 @@ export CROSS_COMPILE=${MAIN_DIR}/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-
 (cd ${KERNEL_SOURCE_DIR} && make clean && make baobab_i9300_defconfig && make -j 4 && make modules)
 
 mkdir -p ${OUT_DIR}
+mkdir -p ${MODULES_DIR}
 
 cp ${KERNEL_SOURCE_DIR}/arch/arm/boot/zImage ${OUT_DIR}/zImage
-(cd ${KERNEL_SOURCE_DIR} && find . -name "*.ko" -exec cp {} ${OUT_DIR} \;)
+(cd ${KERNEL_SOURCE_DIR} && find . -name "*.ko" -exec cp {} ${MODULES_DIR} \;)
 
 # Extracting original boot image
 (cd ${BOOT_IMG_DIR} && perl ../bin/split_bootimg.pl ${BOOT_IMG_DIR}/boot.img)
