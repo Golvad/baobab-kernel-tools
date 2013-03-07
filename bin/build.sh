@@ -31,8 +31,6 @@ cp ${KERNEL_SOURCE_DIR}/arch/arm/boot/zImage ${OUT_DIR}/zImage
 (cd ${BOOT_IMG_DIR} && perl ../bin/split_bootimg.pl ${BOOT_IMG_DIR}/boot.img)
 
 # Creating new boot image
-(cd ${BOOT_IMG_DIR} && ../bin/mkbootimg --cmdline 'console=ttySAC2,115200' --kernel ${OUT_DIR}/zImage --ramdisk boot.img-ramdisk.gz -o baobab-boot.img)
-
-cp ${BOOT_IMG_DIR}/baobab-boot.img ${UPDATE_DIR}
+(cd ${BOOT_IMG_DIR} && ../bin/mkbootimg --cmdline 'console=ttySAC2,115200' --kernel ${OUT_DIR}/zImage --ramdisk boot.img-ramdisk.gz -o ${UPDATE_DIR}/boot.img)
 
 (cd ${UPDATE_DIR} && zip -r baobab-kernel.zip *)

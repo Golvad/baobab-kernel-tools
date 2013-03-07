@@ -2,6 +2,7 @@ assert(getprop("ro.product.device") == "m0" || getprop("ro.build.product") == "m
        getprop("ro.product.device") == "i9300" || getprop("ro.build.product") == "i9300" || 
        getprop("ro.product.device") == "GT-I9300" || getprop("ro.build.product") == "GT-I9300");
 mount("ext4", "EMMC", "/dev/block/mmcblk0p9", "/system");
-package_extract_file("baobab-boot.img", "/dev/block/mmcblk0p5");
+package_extract_file("boot.img", "/dev/block/mmcblk0p5");
+package_extract_dir("system", "/system");                                                            
 unmount("/system");
 
