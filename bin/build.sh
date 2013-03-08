@@ -11,6 +11,7 @@
 cd `dirname $0`/..
 
 MAIN_DIR=`pwd`
+VERSION=0.1
 KERNEL_SOURCE_DIR=${MAIN_DIR}/../baobab-kernel-aosp-s3
 OUT_DIR=${MAIN_DIR}/baobab-kernel-out
 BOOT_IMG_DIR=${MAIN_DIR}/boot-images
@@ -35,4 +36,4 @@ cp ${KERNEL_SOURCE_DIR}/arch/arm/boot/zImage ${OUT_DIR}/zImage
 # Creating new boot image
 (cd ${BOOT_IMG_DIR} && ../bin/mkbootimg --cmdline 'console=ttySAC2,115200' --kernel ${OUT_DIR}/zImage --ramdisk boot.img-ramdisk.gz -o ${UPDATE_DIR}/boot.img)
 
-(cd ${UPDATE_DIR} && zip -r baobab-kernel.zip *)
+(cd ${UPDATE_DIR} && zip -r baobab-kernel_${VERSION}.zip *)
